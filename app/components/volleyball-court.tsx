@@ -7,7 +7,7 @@ export default function VolleyballCourt({
 		<div
 			id="half-court-boundaries"
 			// className="w-[1000px] h-[800px] bg-[#0873A7] relative"
-			className="max-w-7xl w-full aspect-5/4 bg-[#0873A7] relative"
+			className="max-w-7xl w-full aspect-5/4 bg-[#2F8C6F] relative"
 		>
 			<div
 				id="net"
@@ -20,7 +20,7 @@ export default function VolleyballCourt({
 			>
 				<div
 					id="3m-line"
-					className="absolute w-full h-1/3 border-b-2 md:border-b-4 border-white"
+					className="absolute w-full h-1/3 border-b-2 md:border-b-4 border-white pointer-events-none"
 				/>
 
 				{children}
