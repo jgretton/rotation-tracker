@@ -1,17 +1,6 @@
 "use client";
-
-import { RefObject, useContext } from "react";
-import PlayerContext from "../context/PlayerContext";
-
-interface PositionBoxProps {
-	position: number;
-	dialogRef: RefObject<HTMLDivElement>;
-	player: {
-		name: string;
-		number: string;
-		position: number;
-	};
-}
+import { PositionBoxProps } from "../types";
+import { usePlayerContext } from "../hooks/usePlayerContext";
 
 export default function PositionBox({
 	position,
@@ -19,10 +8,12 @@ export default function PositionBox({
 	dialogRef,
 }: PositionBoxProps) {
 	const { setSelectedPosition, setTempPlayer, selectedPlayers } =
-		useContext(PlayerContext);
+		usePlayerContext();
 	const openDialog = () => {
-		setTempPlayer(selectedPlayers.find((a) => a.position === position));
-		dialogRef.current.showModal();
+		const selectedPlayer = selectedPlayers.find((a) => a.position === position);
+		if (selectedPlayer === undefined) return;
+		setTempPlayer(selectedPlayer);
+		dialogRef?.current?.showModal();
 	};
 	return (
 		<button
@@ -30,16 +21,16 @@ export default function PositionBox({
 				openDialog();
 				setSelectedPosition(position);
 			}}
-			className="cursor-pointer  size-full  grid grid-rows-[auto_1fr] z-50 transition-all bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/50 duration-200"
+			className="cursor-pointer  size-full  grid grid-rows-[auto_1fr] z-50 transition-all bg-white/10 hover:bg-white/20 border border-white/30 hover:border-white/50 duration-200 backdrop-blur-[3px] hover:backdrop-blur-sm"
 		>
 			<div className="w-full text-center m-auto mt-10">
 				<p className="text-4xl text-[#fd6d26] ">{position}</p>
 			</div>
 			<div className="text-center m-auto flex gap-2 flex-col flex-1 size-full justify-center items-center -mt-5">
-				<p className="text-3xl text-slate-800 font-bold inline-flex items-center">
+				<p className="text-[min(2vw,20rem)] text-slate-800 font-bold inline-flex items-center">
 					#{player?.number}
 				</p>
-				<p className="text-sm font-medium text-slate-600 text-center leading-tight">
+				<p className="text-xs md:text-base font-medium text-slate-700 text-center leading-tight">
 					{player?.name}
 				</p>
 			</div>
