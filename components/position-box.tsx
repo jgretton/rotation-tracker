@@ -1,6 +1,6 @@
 "use client";
-import { PositionBoxProps } from "../types";
-import { usePlayerContext } from "../hooks/usePlayerContext";
+import { PositionBoxProps } from "../app/types";
+import { usePlayerContext } from "../app/hooks/usePlayerContext";
 
 export default function PositionBox({
 	position,

@@ -1,6 +1,6 @@
 "use client";
-import VolleyballCourt from "./components/volleyball-court";
-import PositionBox from "./components/position-box";
+import VolleyballCourt from "../components/volleyball-court";
+import PositionBox from "../components/position-box";
 import { useRef, useState } from "react";
 import PlayerContext from "./context/PlayerContext";
 import { Player } from "./types";
@@ -71,7 +71,7 @@ export default function Home() {
 				setTempPlayer,
 			}}
 		>
-			<div className="flex flex-col min-h-screen items-center justify-center bg-zinc-50 font-sans">
+			<div className="flex flex-col min-h-screen items-center  bg-zinc-50 font-sans">
 				<h1>Rotation Tracker</h1>
 
 				<VolleyballCourt>
